@@ -20,11 +20,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.sql.DataSource;
 
 import com.googlecode.flyway.core.Flyway;
+import com.zaxxer.hikari.HikariDataSource;
 
 import org.apache.openjpa.persistence.PersistenceProviderImpl;
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.junit.BeforeClass;
 import org.springframework.data.jpa.repository.support.JpaRepositoryFactory;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -73,9 +74,9 @@ public class AbstractTestRepository {
   }
 
   private static DataSource dataSource() {
-    DataSource dataSource = new DataSource();
+    HikariDataSource dataSource = new HikariDataSource();
     dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-    dataSource.setUrl("jdbc:hsqldb:file:target/db;shutdown=true");
+    dataSource.setJdbcUrl("jdbc:hsqldb:file:target/db;shutdown=true");
     dataSource.setUsername("sa");
     dataSource.setPassword("");
     return dataSource;

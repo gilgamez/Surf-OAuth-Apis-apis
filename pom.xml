@@ -82,7 +82,6 @@
     <flyway.version>2.1.1</flyway.version>
     <hsqldb.version>2.2.8</hsqldb.version>
     <junit.version>4.10</junit.version>
-    <tomcat-jdbc.version>7.0.29</tomcat-jdbc.version>
     <spring.version>3.2.7.RELEASE</spring.version>
     <spring-security.version>3.2.7.RELEASE</spring-security.version>
     <openjpa.version>2.2.0</openjpa.version>
@@ -109,6 +108,7 @@
     <mysql.version>5.1.20</mysql.version>
     <coin-api.version>3.11.0</coin-api.version>
 
+    <HikariCP.version>2.3.5</HikariCP.version>
   </properties>
 
   <dependencyManagement>
@@ -235,9 +235,10 @@
         <version>${flyway.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.tomcat</groupId>
-        <artifactId>tomcat-jdbc</artifactId>
-        <version>${tomcat-jdbc.version}</version>
+        <groupId>com.zaxxer</groupId>
+        <!--The java6 postfix can be removed when upgrading to java8-->
+        <artifactId>HikariCP-java6</artifactId>
+        <version>${HikariCP.version}</version>
       </dependency>
       <dependency>
         <groupId>commons-codec</groupId>
